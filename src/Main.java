@@ -14,21 +14,28 @@
 //        “un voyage de x cartons”.//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 
 public class Main {
+
+    public static class HelloWorld {
+        public static void main(String[] args) {
+            System.out.println("Hello, world!");
+        }
+    }
+
     public static void main(String[] args) {
-        int totalCartons = 34;
-        int capaciteCamion = 9;
+        int totalBoxes = 34;
+        int truckCapacity = 9;
 
-        int cartonsRestants = totalCartons;
-        int voyages = 1 ;
+        int remainingBoxes = totalBoxes;
+        int journey = 1 ;
 
-        while(cartonsRestants > 0){
-            int cartonsVoyage = Math.min(cartonsRestants, capaciteCamion);
-            System.out.println("un voyage de " + cartonsVoyage + " cartons");
-            cartonsRestants -= cartonsVoyage;
-            voyages++;
+        while(remainingBoxes > 0){
+            int boxesPerJourney = Math.min(remainingBoxes, truckCapacity);
+            System.out.println("un voyage de " + boxesPerJourney + " cartons");
+            remainingBoxes -= boxesPerJourney;
+            journey++;
         }
 
-        System.out.println("il y a " + voyages + " voyages");
+        System.out.println("il y a " + journey + " voyages");
     }
 
 }
