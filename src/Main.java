@@ -34,8 +34,8 @@ public class Main {
             //Calling the "Math.min()" method with our two variables as parameters in order to compare and keep the tiniest value
             //the tiniest value is stored in "boxesPerJourney
             int boxesPerJourney = Math.min(totalBoxes, truckCapacity);
-            //printing the variable dynamically into the message
-            System.out.println("Un voyage de " + boxesPerJourney + " cartons");
+            //printing the variable dynamically into the message using the displayMessage method
+            displayMessage("Un voyage de " + boxesPerJourney + " cartons");
             //decreasing the value of totalBoxes by the boxesPerJourney at each loop
             totalBoxes -= boxesPerJourney;
             //increasing the value of journey at each loop
@@ -43,7 +43,7 @@ public class Main {
         }
 
         // printing at the end of the loop the final value of "journey"
-        System.out.println("Il y a " + journey + " voyages");
+        displayMessage("Il y a " + journey + " voyages");
     }
 
     /**
@@ -58,18 +58,27 @@ public class Main {
         //infinite for loop
         for (; ; ) {
             //the message to the user is repeated as long as he does not enter an int
-            System.out.print(message);
-            //
+            displayMessage(message);
+            //using the Scanner method "hasNextInt()" witch verified if the input is an int
             if (console.hasNextInt()) {
                 //return of the method "nextInt()" of our instance of Scanner; this method takes the user input as an int
                 //the return makes the loop stop if the input is correct
                 return console.nextInt();
             } else {
                 //if the intput is not an int, the message is print
-                System.out.println("Veuillez entrer un nombre entier !");
+                displayMessage("Veuillez entrer un nombre entier !");
                 //the wrong answer is ignore and the loop started again
                 console.next();
             }
         }
     }
+
+    /**
+     * Method use to centralize printing message
+     * @param message string to print.
+     */
+    public static void displayMessage(String message) {
+        System.out.println(message);
+    }
+
 }

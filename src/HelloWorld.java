@@ -7,9 +7,7 @@
 class HelloWorld {
 
     public static void Hello() {
-        /**
-         * method to print out in line in the console
-         * */
-       // System.out.println("Hello, world!");
+        //Use of Main's displayMessage method that use the System.out.println() method
+        Main.displayMessage("Hello, world!");
     }
 }
