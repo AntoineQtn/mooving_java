@@ -1,40 +1,68 @@
-//Le sujet est le suivant :
-//Votre entreprise déménage dans de nouveaux locaux. Les cartons sont faits (34 cartons au total)
-//et le camion de l’entreprise de déménagement arrive. Les déménageurs remplissent leur camion
-//avec vos cartons. Le camion a une capacité de 9 cartons. Une fois le camion plein, ils rejoignent le
-//nouveau local où ils déchargent vos cartons. Ils effectuent autant de voyages que nécessaire pour
-//vider votre ancien local.
-//Ce programme ne contiendra qu’une seule classe dont le seul but est l’exécution du point
-//d’entrée (main).
-//
-//PRÉCISIONS
-//Le nombre total de cartons et la contenance de chaque camion seront donnés comme valeurs « en
-//dur »
-// L’objectif du programme est d’afficher (dans la console) pour chaque voyage effectué le message :
-//        “un voyage de x cartons”.//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+//import of the Scanner class in order to read console prompts
+import java.util.Scanner;
 
+//class declaration
+class HelloWorld {
+    //the "Hello" method is
+    //"public" which means that it's accessible from anywhere ( scope definition)
+    //"static" which means that it don't need instanciation to be used
+    //"void" is the typing return
+    public static void Hello() {
+        //method to print out in line in the console
+        System.out.println("Hello, world!");
+    }
+}
+
+//The main class of the program in Java
 public class Main {
 
-    public static class HelloWorld {
-        public static void main(String[] args) {
-            System.out.println("Hello, world!");
-        }
-    }
-
+    //the main function of the program, its entry point
+    //it takes as parameters an array of string in order to receive the arguments during execution
     public static void main(String[] args) {
-        int totalBoxes = 34;
-        int truckCapacity = 9;
 
-        int remainingBoxes = totalBoxes;
+        //Calling the "Hello()" method of the "HelloWorld" class
+        HelloWorld.Hello();
+
+        //variable declaration with its type and an initial value set to 1
         int journey = 1 ;
 
-        while(remainingBoxes > 0){
-            int boxesPerJourney = Math.min(remainingBoxes, truckCapacity);
+        //instanciation of a Scanner called "console" that reads the users prompts from the "System.in" which is here the keyboard input
+        Scanner console = new Scanner(System.in);
+
+        //Printing in the console the question to the user
+        System.out.print("Saisir Le nombre de cartons : ");
+        //condition to stop the process and send a message to the user if he don't type an int
+        //using the Scanner method "hasNextInt()" witch verified if the input is an int in an opoose way with the "!"
+        if(!console.hasNextInt()){
+            System.out.println("Veuillez entrer un nombre entier");
+            //the "return" kills the process
+            console.next();
+        }
+        //Calling the method "nextInt()" of our instance of Scanner; this method takes the user input as an int
+        //The result is stored in the int variable "totalBoxes"
+        int totalBoxes = console.nextInt();
+
+        System.out.print("Saisir la capacité du camion : ");
+        if(console.hasNextInt()){
+            System.out.println("Veuillez entrer un nombre entier");
+            console.next();
+        }
+        int truckCapacity = console.nextInt();
+
+
+        //"while" loop that goes from the value of "totalBoxes" until 0
+        while(totalBoxes > 0){
+            //Calling the "Math.min()" method with our two variables as parameters in order to compare and keep the tiniest value
+            //the tiniest value is stored in "boxesPerJourney
+            int boxesPerJourney = Math.min(totalBoxes, truckCapacity);
+            //printing the variable dynamically into the message
             System.out.println("un voyage de " + boxesPerJourney + " cartons");
-            remainingBoxes -= boxesPerJourney;
+            //decreasing the value of totalBoxes by the boxesPerJourney at each loop
+            totalBoxes -= boxesPerJourney;
+            //increasing the value of journey at each loop
             journey++;
         }
-
+        //printing at the end of the loop the final value of "journey"
         System.out.println("il y a " + journey + " voyages");
     }
 
