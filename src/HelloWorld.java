@@ -10,6 +10,6 @@ class HelloWorld {
         /**
          * method to print out in line in the console
          * */
-        System.out.println("Hello, world!");
+       // System.out.println("Hello, world!");
     }
 }
